@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import AddForm from "./components/AddForm";
+import Item from "./components/Item";
+import { useState } from "react";
 
 function App() {
+  const [tasks, setTasks] = useState([
+    {id:1, title: "แก้บัคโปรแกรม"},
+    {id:2, title: "คู่มือการใช้งานโปรแกรม"},
+    {id:3, title: "กดเงินที่ธนาคาร"},
+  ])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="container">
+        <AddForm />
+        <Item />
+      </div>
     </div>
   );
 }
