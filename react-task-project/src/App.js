@@ -6,18 +6,23 @@ import { useState } from "react";
 
 function App() {
   const [tasks, setTasks] = useState([
-    {id:1, title: "แก้บัคโปรแกรม"},
-    {id:2, title: "คู่มือการใช้งานโปรแกรม"},
-    {id:3, title: "กดเงินที่ธนาคาร"},
-  ])
+    { id: 1, title: "แก้บัคโปรแกรม" },
+    { id: 2, title: "คู่มือการใช้งานโปรแกรม" },
+    { id: 3, title: "กดเงินที่ธนาคาร" },
+  ]);
+
+  function deleteTask(id) {
+    const result = tasks.filter(Item=>Item.id !==id);
+    setTasks(result);
+  }
   return (
     <div className="App">
       <Header />
       <div className="container">
         <AddForm />
         <section>
-          {tasks.map((data)=> (
-            <Item key={data.id} data={data}/>
+          {tasks.map((data) => (
+            <Item key={data.id} data={data} deleteTask={deleteTask}/>
           ))}
         </section>
       </div>
