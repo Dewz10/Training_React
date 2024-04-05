@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import AddForm from "./components/AddForm";
 import Item from "./components/Item";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -10,9 +10,15 @@ function App() {
     { id: 2, title: "คู่มือการใช้งานโปรแกรม" },
     { id: 3, title: "กดเงินที่ธนาคาร" },
   ]);
+  // const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("task")) || []);
 
   const [title, setTitle] = useState("");
   const [editId, setEditId] = useState(null);
+  const [theme,setTheme] = useState("light");
+
+  // useEffect(() => {
+  //   localStorage.setItem("task", JSON.stringify(tasks));
+  // }, [tasks]);
 
   function deleteTask(id) {
     const result = tasks.filter((Item) => Item.id !== id);
@@ -25,12 +31,12 @@ function App() {
     if (!title) {
       alert("กรุณาป้อนข้อมูล");
     } else if (editId) {
-      const updateTask = tasks.map((item)=>{
+      const updateTask = tasks.map((item) => {
         if (item.id === editId) {
-          return {...item, title: title}
+          return { ...item, title: title };
         }
         return item;
-      })
+      });
       setTasks(updateTask);
       setEditId(null);
       setTitle("");
@@ -52,7 +58,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header theme={theme} setTheme={setTheme}/>
       <div className="container">
         <AddForm
           title={title}
