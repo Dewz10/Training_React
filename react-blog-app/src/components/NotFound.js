@@ -1,7 +1,10 @@
+import notfound from "../images/notfound.svg"
+
 export default function NotFound() {
     return (
-        <>
-            <h3>ไม่พบหน้าเว็บ (404 Page Not Found)</h3>
-        </>
+        <div className="container">
+            <h3 className="title">ไม่พบหน้าเว็บ (404 Page Not Found)</h3>
+            <img src={notfound} alt="notfound"/>
+        </div>
     );
 }
