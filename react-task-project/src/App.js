@@ -21,6 +21,16 @@ function App() {
   function saveTask(e) {
     e.preventDefault();
     console.log("บันทึกข้อมูล");
+    if (!title) {
+      alert("กรุณาป้อนข้อมูล");
+    } else {
+      const newTask = {
+        id: Math.floor(Math.random())*1000,
+        title: title
+      }
+      setTasks([...tasks, newTask]);
+      setTitle("");
+    }
   }
 
   return (
