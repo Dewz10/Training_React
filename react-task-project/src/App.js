@@ -14,7 +14,7 @@ function App() {
 
   const [title, setTitle] = useState("");
   const [editId, setEditId] = useState(null);
-  const [theme,setTheme] = useState("light");
+  const [theme, setTheme] = useState("light");
 
   // useEffect(() => {
   //   localStorage.setItem("task", JSON.stringify(tasks));
@@ -57,8 +57,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Header theme={theme} setTheme={setTheme}/>
+    <div className={"App " + theme}>
+      <Header theme={theme} setTheme={setTheme} />
       <div className="container">
         <AddForm
           title={title}
