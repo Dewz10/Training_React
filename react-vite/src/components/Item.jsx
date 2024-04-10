@@ -1,3 +1,5 @@
+import "./Item.css";
+
 export default function Item(props) {
     const {title,description} = props;
     return (
@@ -7,7 +9,6 @@ export default function Item(props) {
                 <button>แสดง</button>
             </div>
             <p>{description}</p>
-            <hr/>
         </section>
     );
 }
