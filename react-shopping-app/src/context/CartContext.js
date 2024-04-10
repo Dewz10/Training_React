@@ -17,11 +17,15 @@ export const CartProvider=({children})=>{
         console.log("ลบ id:" + id);
         dispatch({type:"REMOVE",payload:id})
     }
+    function addQuantity(id) {
+        console.log("เพิ่มปริมาณสินค้า id:" + id);
+        dispatch({type:"ADD_QUANTITY",payload:id})
+    }
     useEffect(()=>{
         dispatch({type:"CALCULATE_TOTAL"})
     },[state.products])
     return (
-        <CartContext.Provider value={{...state,formatMoney,removeItem}}>
+        <CartContext.Provider value={{...state,formatMoney,removeItem,addQuantity}}>
             {children}
         </CartContext.Provider>
     )
