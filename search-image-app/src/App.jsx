@@ -5,8 +5,7 @@ import Picture from "./components/Picture";
 function App() {
   const [word, setWord] = useState("");
   const [photos,setPhotos] = useState([]);
-  const key = "FiiIMQ3RJDjc-IUX9UrAM_Jhaznizn3ZiXTy4xjIWiI";
-
+  
   function searchImage(e) {
     e.preventDefault();
     if (!word) {
@@ -18,7 +17,7 @@ function App() {
   }
 
   async function fetchImageFromAPI() {
-    const url =  `https://api.unsplash.com/search/photos?page=1&query=${word}&client_id=${key}&per_page=20`
+    const url =  `${import.meta.env.VITE_API_URL}?page=1&query=${word}&client_id=${import.meta.env.VITE_API_KEY}&per_page=20`
     const res = await fetch(url);
     const data = await res.json();
     const result = data.results;
