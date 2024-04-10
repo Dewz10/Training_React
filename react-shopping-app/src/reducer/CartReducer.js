@@ -1,3 +1,5 @@
+import products from "../data/Products";
+
 const CartReducer = (state, action) => {
   if (action.type === "CALCULATE_TOTAL") {
     const { total, amount } = state.products.reduce(
@@ -19,6 +21,13 @@ const CartReducer = (state, action) => {
       total,
       amount,
     };
+  }
+
+  if (action.type === "REMOVE") {
+    return {
+        ...state,
+        products: state.products.filter((item)=>item.id !==action.payload)
+    }
   }
 };
 export default CartReducer;
