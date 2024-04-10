@@ -5,7 +5,7 @@ export default function Cart() {
   const { products, total, formatMoney } = useCart();
   return (
     <div className="cart">
-      <h1 style={{ textAlign: "center" }}>
+      <h1 style={{ textAlign: "center", fontFamily:"Noto Sans Thai" }}>
         {products.length > 0
           ? `ยอดชำระเงินรวม : ${formatMoney(total)} บาท`
           : "ไม่พบสินค้าในตะกร้า"}
