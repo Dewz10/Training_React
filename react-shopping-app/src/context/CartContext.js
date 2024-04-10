@@ -1,4 +1,4 @@
-import { createContext,useContext,useReducer } from "react";
+import { createContext,useContext,useReducer,useEffect } from "react";
 import products from "../data/Products";
 import CartReducer from "../reducer/CartReducer";
 const CartContext = createContext();
@@ -12,6 +12,9 @@ export const CartProvider=({children})=>{
     function formatMoney(money){
         return money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
+    useEffect(()=>{
+        dispatch({type:"CALCULATE_TOTAL"})
+    },[state.products])
     return (
         <CartContext.Provider value={{...state,formatMoney}}>
             {children}
